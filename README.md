@@ -153,7 +153,7 @@ npx prisma migrate dev --name init
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) (demo board) and [http://localhost:3000/board](http://localhost:3000/board) (after sign-in).
+Open `BETTER_AUTH_URL` (default `http://localhost:3000`) — demo board at `/`, personal board at `/board` after sign-in.
 English and Arabic resolve at `/en` and `/ar`.
 
 ---
@@ -185,7 +185,7 @@ pulsefeed/
 ├── prisma.config.ts                  # Prisma configuration
 ├── vitest.config.ts                  # Vitest configuration
 ├── playwright.config.ts              # Playwright configuration
-├── lighthouserc.js                   # Lighthouse CI config
+├── lighthouserc.mjs                  # Lighthouse CI config
 ├── eslint.config.mjs                 # ESLint flat config
 ├── postcss.config.mjs                # PostCSS / Tailwind
 ├── tsconfig.json                     # TypeScript config

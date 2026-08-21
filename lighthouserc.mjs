@@ -1,8 +1,12 @@
+import { getSiteUrl } from "./lib/site-url.js";
+
+const baseURL = getSiteUrl();
+
 /** @type {import('@lhci/cli').LHCI} */
-module.exports = {
+const config = {
   ci: {
     collect: {
-      url: ["http://localhost:3000/en", "http://localhost:3000/ar"],
+      url: [`${baseURL}/en`, `${baseURL}/ar`],
       numberOfRuns: 1,
       startServerCommand: "npm run start",
       startServerReadyPattern: "Ready in",
@@ -23,3 +27,5 @@ module.exports = {
     },
   },
 };
+
+export default config;

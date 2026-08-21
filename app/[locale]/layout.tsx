@@ -5,6 +5,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { I18nProvider } from "@/components/providers/I18nProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { defaultLocale, dir, isLocale, type Locale } from "@/lib/i18n/settings";
+import { getSiteUrl } from "@/lib/site-url.js";
 import "../globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -50,7 +51,7 @@ export async function generateMetadata({
       : "Live cryptocurrency price tracking board";
   return {
     metadataBase: new URL(
-      process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+      getSiteUrl()
     ),
     title,
     description,
