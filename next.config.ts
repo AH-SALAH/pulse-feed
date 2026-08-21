@@ -9,6 +9,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data:",
       "font-src 'self' data:",
+      "worker-src 'self' blob:",
       "connect-src 'self' wss://stream.binance.com:9443 https://api.binance.com https://openrouter.ai",
       "frame-ancestors 'none'",
       "base-uri 'self'",
