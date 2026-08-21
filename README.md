@@ -40,12 +40,14 @@ respected, Lighthouse ≥ 90 gated in CI across both locales and themes.
 | Framework | Next.js 16 (App Router), React 19, TypeScript strict          |
 | Styling   | Tailwind CSS + Sass modules, token file (`styles/tokens.css`) |
 | Charts    | D3 (sparklines), Recharts (expanded views)                    |
+| Forms     | React Hook Form + Zod (shared schemas in `lib/forms/`)        |
+| Icons     | react-icons / Lucide (`react-icons/lu`)                       |
 | Data      | TanStack Query; native WebSocket → Binance public stream      |
 | Auth      | Better Auth (self-hosted) + Prisma adapter                    |
 | Database  | PostgreSQL                                                    |
 | AI        | OpenRouter (auto-router), 5-min shared cache                  |
 | i18n      | i18next + react-i18next, `en`/`ar`                            |
-| Theming   | next-themes                                                   |
+| Theming   | Token-driven CSS custom properties, OS `prefers-color-scheme` |
 | Testing   | Vitest, Playwright, Storybook                                 |
 | CI        | GitHub Actions + Lighthouse CI                                |
 
@@ -144,7 +146,7 @@ category, both locales).
 
 ```
 pulsefeed/
-├── middleware.ts            # locale detection/redirect
+├── proxy.ts                 # locale detection/redirect
 ├── next.config.js           # security headers, CSP
 ├── styles/
 │   └── tokens.css           # design tokens: colors, spacing, type
@@ -162,6 +164,7 @@ pulsefeed/
 │   ├── market-data/         # Binance provider, tick buffer
 │   ├── ai-insight/          # OpenRouter client + cache
 │   ├── boards/              # persistence + ownership
+│   ├── forms/               # shared RHF/zod form schemas
 │   ├── auth/                # Better Auth config + session
 │   └── i18n/                # locale settings + i18next init
 ├── locales/
@@ -195,8 +198,6 @@ session — client-supplied identity is never trusted.
 locales.
 
 ---
-
-
 
 ## Created by
 
