@@ -1,5 +1,11 @@
 # PulseFeed
 
+![Build](https://img.shields.io/github/actions/workflow/status/AH-SALAH/pulse-feed/ci.yml?branch=main&label=CI)
+![License](https://img.shields.io/github/license/AH-SALAH/pulse-feed)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript)
+![PRs](https://img.shields.io/badge/PRs-welcome-brightgreen)
+
 Real-time market-data visualization platform. A public demo board streams live crypto prices
 over a Binance WebSocket with zero login; signed-in users get a personal, customizable board,
 per-widget AI explanations of recent price action, full English/Arabic (RTL) support, and
@@ -39,6 +45,34 @@ respected, Lighthouse ≥ 90 gated in CI across both locales and themes.
 - **Rate limiting** — per-user token bucket on AI explanation endpoint (30 req/day),
 prevents free-tier exhaustion.
 - **User preferences** — locale and theme preferences persisted server-side per user.
+
+---
+
+## Screenshots
+
+### Currency Ai Explaination
+
+![Currency Ai Explaination](public/screenshots/currency-ai-explaination.png)
+
+### Light Theme
+
+![Light Theme](public/screenshots/light-theme.png)
+
+### Arabic
+
+![Arabic](public/screenshots/arabic.png)
+
+### Demo Board
+
+![Demo Board](public/screenshots/demo-board.png)
+
+### Customize Board
+
+![Customize Board](public/screenshots/customize-board.png)
+
+### Demo Recording
+
+<video src="public/screenshots/demo-recording.mp4" width="100%" controls></video>
 
 ---
 
@@ -276,7 +310,14 @@ pulsefeed/
 │   ├── og.png                       # OpenGraph social preview
 │   ├── robots.txt                   # search engine directives
 │   ├── web-app-manifest-192x192.png # PWA icon (small)
-│   └── web-app-manifest-512x512.png # PWA icon (large)
+│   ├── web-app-manifest-512x512.png # PWA icon (large)
+│   └── screenshots/                 # app screenshots and demo recording
+│       ├── demo-board.png           # public demo board view
+│       ├── sign-in.png              # sign-in page
+│       ├── sign-up.png              # sign-up page
+│       ├── personal-board.png       # authenticated personal board
+│       ├── customize-board.png      # board customization view
+│       └── demo-recording.mov       # full app demo video
 │
 ├── DESIGN.md                        # design system documentation
 ├── .env.example                     # environment variable template
