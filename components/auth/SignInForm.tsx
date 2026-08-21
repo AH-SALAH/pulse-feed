@@ -217,7 +217,7 @@ export function SignInForm({ locale }: SignInFormProps) {
 
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || socialLoading !== null}
               className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 font-body text-body-md font-medium text-on-primary shadow-sm shadow-primary/20 transition-all hover:bg-primary-container/80 hover:shadow-md hover:shadow-primary/30 disabled:cursor-not-allowed disabled:opacity-50 h-[48px]"
             >
               {isSubmitting ? (
