@@ -66,7 +66,7 @@ export function BoardHeader({ locale }: { locale: string }) {
       ref={headerRef}
       role="region"
       aria-label={t("board.headerLabel")}
-      className="sticky top-0 z-20 border-b border-outline/50 bg-surface-container-low/80 backdrop-blur-xl"
+      className="sticky top-0 z-20 border-b border-outline/50 backdrop-blur-xl"
     >
       <div className="flex h-14 items-center justify-between gap-4 px-margin-mobile lg:px-margin-desktop">
         <div className="flex items-center gap-4">

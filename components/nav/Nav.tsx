@@ -80,7 +80,7 @@ export function Nav() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-20 border-b border-outline/50 bg-surface-container-low/80 backdrop-blur-xl"
+      className="sticky top-0 z-20 border-b border-outline/50 backdrop-blur-xl"
     >
       <nav
         aria-label={t("nav.menuLabel")}

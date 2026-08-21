@@ -149,7 +149,7 @@ export default function Widget({ symbol, editable = false }: WidgetProps) {
         </p>
       </div>
 
-      <div className="rounded-xl bg-surface-container-low/50 p-2 -mx-1">
+      <div className="rounded-xl p-2 -mx-1">
         <div dir="ltr">
           <Sparkline
             data={prices}
