@@ -43,7 +43,7 @@ export function BoardSidebar({ locale }: { locale: string }) {
         {boardNavItems.map((item) => {
           const href = `/${locale}${item.href}`;
           const isActive =
-            pathname === href || (item.href !== "/" && pathname.startsWith(href));
+            pathname === href || (item.href !== "/" && pathname?.startsWith(href));
           const label = t(`nav.${item.key}`);
           if(!item.active) {
             return <button key={item.key}            className={`group relative flex size-12 cursor-pointer items-center justify-center rounded-[0.75rem] transition-all ${

@@ -33,7 +33,8 @@ export function BoardGrid({
   onRemove,
 }: BoardGridProps) {
   const { t } = useTranslation();
-  const { locale } = useParams<{ locale: string }>();
+  const params = useParams<{ locale: string }>();
+  const locale = params?.locale ?? "en";
   const reducedMotion = useReducedMotion();
 
   const transition = reducedMotion

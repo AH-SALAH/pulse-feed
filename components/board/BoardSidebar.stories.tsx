@@ -1,12 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { usePathname } from "next/navigation";
 import { BoardSidebar } from "./BoardSidebar";
 import { I18nProvider } from "@/components/providers/I18nProvider";
-
-const mockPathname = usePathname as unknown as {
-  mockReturnValue?: (value: string) => void;
-};
-mockPathname.mockReturnValue?.("/en/board");
 
 function SidebarFixture() {
   return (
@@ -21,6 +15,18 @@ const meta: Meta<typeof BoardSidebar> = {
   component: BoardSidebar,
   parameters: {
     layout: "fullscreen",
+    nextNavigation: {
+      pathname: "/en/board",
+    },
+    viewport: {
+      defaultViewport: "lg",
+      viewports: {
+        lg: {
+          name: "Large (1280)",
+          styles: { width: "1280px", height: "800px" },
+        },
+      },
+    },
   },
 };
 

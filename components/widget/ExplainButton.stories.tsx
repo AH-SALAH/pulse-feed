@@ -4,12 +4,14 @@ import ExplainButton from "./ExplainButton";
 const meta: Meta<typeof ExplainButton> = {
   title: "Widget/ExplainButton",
   component: ExplainButton,
-  args: { symbol: "SOLUSDT" },
+  args: { symbol: "SOLUSDT", isExplainLoading: false },
   decorators: [
     (Story) => (
-      <div className="relative flex h-64 w-full max-w-xs flex-col rounded-2xl border border-outline-variant/20 bg-surface-container py-4 px-6">
-        <div className="mt-auto">
-          <Story />
+      <div className="flex min-h-[24rem] items-center justify-center">
+        <div className="relative flex h-64 w-80 flex-col justify-end rounded-2xl border border-outline-variant/20 bg-surface-container px-6 py-4">
+          <div className="relative w-full">
+            <Story />
+          </div>
         </div>
       </div>
     ),
