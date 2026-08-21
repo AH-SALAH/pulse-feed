@@ -13,6 +13,7 @@ import CoinIcon from "./CoinIcon";
 import Sparkline from "./Sparkline";
 import ExplainButton from "./ExplainButton";
 import { useReducedMotion } from "@/lib/hooks/use-reduced-motion";
+import { useEffect, useState } from "react";
 
 interface WidgetProps {
   id: string;
@@ -33,6 +34,7 @@ export default function Widget({ symbol, editable = false }: WidgetProps) {
   const { t } = useTranslation();
   const { latestTick, window, connectionState } = useMarketData();
   const reducedMotion = useReducedMotion();
+  const [isExplainLoading, setIsExplainLoading] = useState(false);
 
   const tick = latestTick(symbol);
   const prices = window(symbol).map((t) => t.price);
@@ -44,6 +46,17 @@ export default function Widget({ symbol, editable = false }: WidgetProps) {
 
   const baseSymbol = symbol.replace("USDT", "");
   const coinName = t(`widget.names.${baseSymbol}`) ?? baseSymbol;
+
+  // sunscribe to explaining loading eent to disable all widgets buttons
+  useEffect(() => {
+    const handleExplaining = (e: CustomEventInit) => {
+      setIsExplainLoading(e.detail);
+    };
+    globalThis.window.removeEventListener("explaining", handleExplaining);
+    globalThis.window.addEventListener("explaining", handleExplaining);
+    return () => globalThis.window.removeEventListener("explaining", handleExplaining);
+  }, []);
+  
 
   return (
     <article
@@ -145,7 +158,7 @@ export default function Widget({ symbol, editable = false }: WidgetProps) {
       ) : null}
 
       <footer className="mt-auto relative">
-        <ExplainButton symbol={symbol} />
+        <ExplainButton symbol={symbol} isExplainLoading={isExplainLoading} />
       </footer>
     </article>
   );

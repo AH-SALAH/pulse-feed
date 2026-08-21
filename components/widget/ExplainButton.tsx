@@ -8,6 +8,7 @@ import { useReducedMotion } from "@/lib/hooks/use-reduced-motion";
 interface ExplainButtonProps {
   symbol: string;
   initialState?: ExplainState;
+  isExplainLoading: boolean
 }
 
 type ExplainState =
@@ -23,12 +24,23 @@ const STREAM_CHARS = 2;
 export default function ExplainButton({
   symbol,
   initialState,
+  isExplainLoading
 }: ExplainButtonProps) {
   const { t, i18n } = useTranslation();
   const reducedMotion = useReducedMotion();
   const [state, setState] = useState<ExplainState>(
     initialState ?? { status: "idle" },
   );
+
+  useEffect(() => {
+    if(state.status === "idle") return;
+    if(state.status === "loading") {
+      dispatchEvent(new CustomEvent("explaining", { detail: true, bubbles: true, composed: true }));
+    }
+    else {
+      dispatchEvent(new CustomEvent("explaining", { detail: false, bubbles: true, composed: true }));
+    }
+  }, [state.status]);
 
   async function explain(): Promise<void> {
     setState({ status: "loading" });
@@ -187,7 +199,7 @@ export default function ExplainButton({
         data-testid="explain-button"
         aria-label={t("widget.explain.aria", { symbol })}
         className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm border-t border-outline-variant/10 bg-surface-container/50 px-3 py-2 font-body text-body-md text-secondary transition-colors hover:bg-secondary/10 disabled:cursor-not-allowed disabled:opacity-60"
-        disabled={state.status === "loading"}
+        disabled={state.status === "loading" || isExplainLoading}
         onClick={explain}
       >
         <LuSparkles aria-hidden="true" className="size-4" />
