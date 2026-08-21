@@ -31,7 +31,7 @@ export default function BoardClient({ widgets: initialWidgets, editable = false 
   const isSyncingRef = useRef(false);
   const snapshotRef = useRef<BoardQuery | null>(null);
 
-  const { data } = useQuery<BoardQuery>({
+  const { data, isLoading } = useQuery<BoardQuery>({
     queryKey: ["board", editable ? "personal" : "demo"],
     queryFn: async () => {
       const res = await fetch("/api/boards/me", { cache: "no-store" });
@@ -257,6 +257,7 @@ export default function BoardClient({ widgets: initialWidgets, editable = false 
       <BoardGrid
         widgets={board.widgets}
         editable={editable}
+        loading={isLoading && editable}
         dragId={dragId}
         onDragStart={setDragId}
         onDrop={handleDrop}

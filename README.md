@@ -70,6 +70,10 @@ prevents free-tier exhaustion.
 
 ![Customize Board](public/screenshots/customize-board.png)
 
+### Add Widget
+
+![Add Widget](public/screenshots/add-widget.png)
+
 ### Demo Recording
 
 <video src="public/screenshots/demo-recording.mp4" width="100%" controls></video>
@@ -317,6 +321,7 @@ pulsefeed/
 │       ├── sign-up.png              # sign-up page
 │       ├── personal-board.png       # authenticated personal board
 │       ├── customize-board.png      # board customization view
+│       ├── add-widget.png           # add-widget modal view
 │       └── demo-recording.mov       # full app demo video
 │
 ├── DESIGN.md                        # design system documentation

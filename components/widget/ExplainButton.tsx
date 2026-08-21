@@ -198,7 +198,7 @@ export default function ExplainButton({
         type="button"
         data-testid="explain-button"
         aria-label={t("widget.explain.aria", { symbol })}
-        className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm border-t border-outline-variant/10 bg-surface-container/50 px-3 py-2 font-body text-body-md text-secondary transition-colors hover:bg-secondary/10 disabled:cursor-not-allowed disabled:opacity-60"
+        className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl border-t border-outline-variant/10 bg-surface-container-low/50 px-3 py-2.5 font-body text-body-md text-secondary transition-all hover:bg-secondary/10 hover:text-secondary hover:shadow-[inset_0_1px_0_var(--color-secondary)]/10 disabled:cursor-not-allowed disabled:opacity-50"
         disabled={state.status === "loading" || isExplainLoading}
         onClick={explain}
       >

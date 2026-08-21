@@ -5,9 +5,10 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LuMail, LuLock, LuLoaderCircle, LuGithub, LuChrome } from "react-icons/lu";
+import { LuMail, LuLock, LuLoaderCircle, LuGithub, LuChrome, LuShieldCheck } from "react-icons/lu";
 import { authClient } from "@/lib/auth/client";
 import { signInSchema, type SignInValues } from "@/lib/forms/schemas";
+import { Logo } from "@/components/brand/Logo";
 
 interface SignInFormProps {
   locale: string;
@@ -57,27 +58,30 @@ export function SignInForm({ locale }: SignInFormProps) {
   }
 
   const inputClass =
-    "w-full rounded-2xl border border-outline-variant bg-surface-container px-4 py-2.5 ps-10 font-body text-body-md text-on-surface placeholder-on-surface-variant outline-none transition-colors focus:border-primary focus:ring-0 focus:bg-surface-container-high";
+    "w-full rounded-2xl border border-outline-variant/60 bg-surface-container px-4 py-2.5 ps-10 font-body text-body-md text-on-surface placeholder-on-surface-variant/50 outline-none transition-all focus:border-primary/60 focus:ring-0 focus:bg-surface-container-high focus:shadow-[0_0_0_1px_var(--color-primary)]/10";
 
   return (
-    <main className="flex min-h-[calc(100dvh-4rem)] items-center justify-center px-gutter py-16">        <div className="w-full max-w-[28rem]">
-        <div className="mb-8 text-center">
-          {/* <h1 className="font-heading text-display-lg font-semibold tracking-tight text-on-surface">
-            {t("auth.signInTo")}
-          </h1> */}
-          <LuLock
-            aria-hidden="true"
-            className="pointer-events-none mx-auto size-8 text-on-surface-variant"
-          />
+    <main className="flex min-h-[calc(100dvh-4rem)] items-center justify-center px-gutter py-16">
+      <div className="w-full max-w-[28rem]">
+        <div className="animate-card-in mb-8 flex flex-col items-center gap-4 text-center">
+          <Logo className="h-10" />
+          <div>
+            <h1 className="font-heading text-headline-lg-mobile font-semibold tracking-tight text-on-surface lg:text-headline-lg">
+              {t("auth.signInTo")}
+            </h1>
+            <p className="mt-2 font-body text-body-md text-on-surface-variant">
+              {t("auth.subtitle")}
+            </p>
+          </div>
         </div>
 
         <div className="space-y-4">
-          <div className="grid grid-cols-[1fr_1fr] gap-3">
+          <div className="animate-card-in-delay-1 grid grid-cols-[1fr_1fr] gap-3">
             <button
               type="button"
               onClick={() => handleSocialSignIn("github")}
               disabled={isSubmitting}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-outline-variant bg-surface-container px-4 py-2.5 font-body text-body-md font-medium text-on-surface transition hover:bg-surface-container-high focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed h-[48px]"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-outline-variant/60 bg-surface-container px-4 py-2.5 font-body text-body-md font-medium text-on-surface transition-all hover:border-outline-variant hover:bg-surface-container-high hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50 h-[48px]"
             >
               <LuGithub aria-hidden="true" className="size-5" />
               {t("auth.continueWith", { provider: "GitHub" })}
@@ -86,19 +90,19 @@ export function SignInForm({ locale }: SignInFormProps) {
               type="button"
               onClick={() => handleSocialSignIn("google")}
               disabled={isSubmitting}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-outline-variant bg-surface-container px-4 py-2.5 font-body text-body-md font-medium text-on-surface transition hover:bg-surface-container-high focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed h-[48px]"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-outline-variant/60 bg-surface-container px-4 py-2.5 font-body text-body-md font-medium text-on-surface transition-all hover:border-outline-variant hover:bg-surface-container-high hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50 h-[48px]"
             >
               <LuChrome aria-hidden="true" className="size-5" />
               {t("auth.continueWith", { provider: "Google" })}
             </button>
           </div>
 
-          <div className="relative">
+          <div className="animate-card-in-delay-2 relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-outline-variant" />
+              <div className="w-full border-t border-outline-variant/40" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-on-surface-variant font-label text-label-caps">
+              <span className="bg-surface px-3 text-on-surface-variant/60 font-label text-label-caps">
                 {t("auth.or")}
               </span>
             </div>
@@ -107,7 +111,7 @@ export function SignInForm({ locale }: SignInFormProps) {
           <form
             onSubmit={handleSubmit(onSubmit)}
             noValidate
-            className="space-y-5 rounded-2xl border border-outline-variant bg-surface-container p-6"
+            className="animate-card-in-delay-2 space-y-5 rounded-2xl border border-outline-variant/40 bg-surface-container/80 p-6 shadow-sm"
           >
             <div className="space-y-2">
               <label
@@ -191,7 +195,7 @@ export function SignInForm({ locale }: SignInFormProps) {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 font-body text-body-md font-medium text-on-primary transition hover:bg-primary-container/80 disabled:cursor-not-allowed disabled:opacity-50 h-[48px]"
+              className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 font-body text-body-md font-medium text-on-primary shadow-sm shadow-primary/20 transition-all hover:bg-primary-container/80 hover:shadow-md hover:shadow-primary/30 disabled:cursor-not-allowed disabled:opacity-50 h-[48px]"
             >
               {isSubmitting ? (
                 <>
@@ -204,15 +208,23 @@ export function SignInForm({ locale }: SignInFormProps) {
             </button>
           </form>
 
-          <p className="text-center font-body text-body-md text-on-surface-variant">
+          <p className="animate-card-in-delay-3 text-center font-body text-body-md text-on-surface-variant">
             {t("auth.noAccount")}{" "}
             <Link
               href={`/${locale}/sign-up`}
-              className="font-medium text-primary hover:underline"
+              className="font-medium text-primary transition-colors hover:text-primary-container"
             >
               {t("auth.createOne")}
             </Link>
           </p>
+
+          <div className="animate-card-in-delay-3 flex flex-col items-center gap-2 pt-4">
+            <div className="flex items-center gap-1.5 text-on-surface-variant/40">
+              <LuShieldCheck aria-hidden="true" className="size-3.5" />
+              <span className="font-body text-body-sm">{t("auth.socialProof")}</span>
+            </div>
+            <span className="font-telemetry text-telemetry-sm text-on-surface-variant/30">{t("auth.socialProofCount")}</span>
+          </div>
         </div>
       </div>
     </main>

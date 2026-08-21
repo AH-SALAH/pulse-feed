@@ -30,6 +30,13 @@ const priceFormat = new Intl.NumberFormat("en-US", {
   currency: 'USD',
 });
 
+const cryptoPercentFormatter = new Intl.NumberFormat('en-US', {
+  style: 'percent',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+  signDisplay: 'exceptZero' // Automatically adds "+" for positive, "-" for negative, nothing for exactly 0
+});
+
 export default function Widget({ symbol, editable = false }: WidgetProps) {
   const { t } = useTranslation();
   const { latestTick, window, connectionState } = useMarketData();
@@ -61,17 +68,17 @@ export default function Widget({ symbol, editable = false }: WidgetProps) {
   return (
     <article
       data-testid="widget"
-      className="group relative flex h-full flex-col gap-3 rounded-2xl border border-outline-variant/20 bg-surface-container py-4 px-6 transition-colors hover:border-secondary/40"
+      className="group relative flex h-full flex-col gap-3 rounded-2xl border border-outline-variant/20 bg-surface-container py-4 px-6 transition-all hover:border-secondary/30 hover:shadow-md hover:shadow-secondary/5"
     >
       <header className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2.5">
           <div
             aria-hidden="true"
-            className="flex size-8 shrink-0 items-center justify-center rounded-full border border-outline-variant/30 bg-surface-container-highest text-secondary"
+            className="flex size-8 shrink-0 items-center justify-center rounded-xl border border-outline-variant/20 bg-surface-container-high transition-colors group-hover:border-secondary/30 group-hover:bg-secondary/5"
           >
             <CoinIcon
               symbol={baseSymbol}
-              className="size-4 text-on-surface"
+              className="size-4 text-on-surface transition-colors group-hover:text-secondary"
             />
           </div>
           <div className="flex flex-col">
@@ -101,9 +108,7 @@ export default function Widget({ symbol, editable = false }: WidgetProps) {
             <LuArrowDown aria-hidden="true" className="size-3.5" />
           )}
           <span>
-            {tick
-              ? `${changePositive ? "+" : ""}${changePct.toFixed(2)}%`
-              : "--.--%"}
+          {tick ? cryptoPercentFormatter.format(tick.changePct) : "--.--%"}
           </span>
         </div>
       </header>
@@ -131,24 +136,29 @@ export default function Widget({ symbol, editable = false }: WidgetProps) {
         </span>
       </div>
 
-      <p>
-        <span
-          data-testid="widget-price"
-          className={`font-telemetry text-telemetry-lg font-semibold tabular-nums text-on-surface ${
-            reducedMotion ? "" : "animate-price-pop"
-          }`}
-        >
-          {tick ? priceFormat.format(tick.price) : "—"}
-        </span>
-      </p>
+      <div className="mt-auto">
+        <p>
+          <span
+            data-testid="widget-price"
+            className={`font-telemetry text-telemetry-lg font-semibold tabular-nums text-on-surface ${
+              reducedMotion ? "" : "animate-price-pop"
+            }`}
+          >
+            {tick ? priceFormat.format(tick.price) : "—"}
+          </span>
+        </p>
+      </div>
 
-      <div dir="ltr">
-        <Sparkline
-          data={prices}
-          isLive={!reconnecting}
-          aria-label={t("widget.priceHistoryAria", { symbol })}
-          className="h-16 w-full"
-        />
+      <div className="rounded-xl bg-surface-container-low/50 p-2 -mx-1">
+        <div dir="ltr">
+          <Sparkline
+            data={prices}
+            isLive={!reconnecting}
+            reducedMotion={reducedMotion}
+            aria-label={t("widget.priceHistoryAria", { symbol })}
+            className="h-16 w-full"
+          />
+        </div>
       </div>
 
       {editable ? (
@@ -157,7 +167,7 @@ export default function Widget({ symbol, editable = false }: WidgetProps) {
         </div>
       ) : null}
 
-      <footer className="mt-auto relative">
+      <footer className="relative">
         <ExplainButton symbol={symbol} isExplainLoading={isExplainLoading} />
       </footer>
     </article>

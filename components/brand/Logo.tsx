@@ -8,6 +8,7 @@ export function Logo({ className = "" }: { className?: string }) {
         alt=""
         width={812}
         height={261}
+        loading={'eager'}
         className="theme-logo-dark h-10 w-auto rounded-xl"
       />
       <Image
@@ -15,6 +16,7 @@ export function Logo({ className = "" }: { className?: string }) {
         alt=""
         width={801}
         height={272}
+        loading={'eager'}
         className="theme-logo-light h-10 w-auto rounded-xl"
       />
     </span>

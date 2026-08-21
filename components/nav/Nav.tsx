@@ -80,7 +80,7 @@ export function Nav() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-20 border-b border-outline bg-surface-container-low/80 backdrop-blur"
+      className="sticky top-0 z-20 border-b border-outline/50 bg-surface-container-low/80 backdrop-blur-xl"
     >
       <nav
         aria-label={t("nav.menuLabel")}
@@ -137,7 +137,7 @@ export function Nav() {
 
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-full border border-outline-variant bg-surface-container text-on-surface transition-colors hover:border-primary hover:bg-surface-container-high lg:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-xl border border-outline-variant/60 bg-surface-container text-on-surface transition-all hover:border-primary/50 hover:bg-surface-container-high hover:text-primary lg:hidden"
             aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={menuOpen}
             aria-controls="mobile-nav-menu"
@@ -156,7 +156,7 @@ export function Nav() {
         <div
           id="mobile-nav-menu"
           ref={panelRef}
-          className="absolute inset-x-0 top-full border-b border-outline bg-surface-container-low/95 backdrop-blur lg:hidden"
+          className="absolute inset-x-0 top-full z-10 border-b border-outline/50 bg-surface-container-low/95 shadow-lg shadow-black/20 backdrop-blur-xl animate-popover-in lg:hidden"
           role="menu"
           aria-label={t("nav.menuLabel")}
         >
@@ -165,28 +165,28 @@ export function Nav() {
               href={`/${locale}`}
               role="menuitem"
               onClick={closeMenu}
-              className="flex items-center gap-3 rounded-xl px-3 py-3 font-body text-body-md text-on-surface transition-colors hover:bg-surface-container"
+              className="flex items-center gap-3 rounded-xl px-3 py-3 font-body text-body-md text-on-surface transition-colors hover:bg-surface-container-high"
             >
-              <LuActivity aria-hidden="true" className="size-4 text-on-surface-variant" />
+              <LuActivity aria-hidden="true" className="size-4 text-secondary" />
               {t("nav.demo")}
             </Link>
             <Link
               href={`/${locale}/board`}
               role="menuitem"
               onClick={closeMenu}
-              className="flex items-center gap-3 rounded-xl px-3 py-3 font-body text-body-md text-on-surface transition-colors hover:bg-surface-container"
+              className="flex items-center gap-3 rounded-xl px-3 py-3 font-body text-body-md text-on-surface transition-colors hover:bg-surface-container-high"
             >
-              <LuLayoutGrid aria-hidden="true" className="size-4 text-on-surface-variant" />
+              <LuLayoutGrid aria-hidden="true" className="size-4 text-secondary" />
               {t("nav.myBoard")}
             </Link>
-            <div role="separator" className="my-1 h-px bg-outline-variant" />
+            <div role="separator" className="my-2 h-px bg-outline-variant/50" />
             {session ? (
               <button
                 type="button"
                 role="menuitem"
                 data-testid="sign-out"
                 onClick={handleSignOut}
-                className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-3 text-start font-body text-body-md text-on-surface transition-colors hover:bg-surface-container"
+                className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-3 text-start font-body text-body-md text-on-surface transition-colors hover:bg-surface-container-high"
               >
                 <LuLogOut aria-hidden="true" className="size-4 text-on-surface-variant" />
                 {t("auth.signOut")}
@@ -196,7 +196,7 @@ export function Nav() {
                 href={`/${locale}/sign-in`}
                 role="menuitem"
                 onClick={closeMenu}
-                className="mt-1 flex h-[40px] items-center justify-center gap-2 rounded-full bg-primary px-4 font-body text-body-md font-medium text-on-primary transition hover:bg-primary-container/80"
+                className="mt-1 flex h-[40px] items-center justify-center gap-2 rounded-full bg-primary px-4 font-body text-body-md font-medium text-on-primary shadow-sm shadow-primary/20 transition hover:bg-primary-container/80"
               >
                 <LuLogIn aria-hidden="true" className="size-4" />
                 {t("auth.signIn")}

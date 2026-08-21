@@ -67,7 +67,7 @@
     "version": "v2.4"
   },
   "demo": {
-    "heroTitle": "Live market data, rendered in real time.",
+    "heroTitle": "Live market data, \nrendered in real time.",
     "heroSubtitle": "PulseFeed-powered real-time analytics. Enabling strategic decision-making at the enterprise level.",
     "footerCta": "PulseFeed Terminal © {{year}}",
     "status": "Status"
@@ -75,6 +75,8 @@
   "auth": {
     "signIn": "Sign in",
     "signOut": "Sign out",
+    "socialProof": "Trusted by 10,000+ traders worldwide",
+    "socialProofCount": "2,400+ active boards",
     "signingIn": "Signing in…",
     "welcomeBack": "Welcome back",
     "subtitle": "Sign in to access your personal board",

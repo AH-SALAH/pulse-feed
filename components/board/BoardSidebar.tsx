@@ -27,13 +27,13 @@ export function BoardSidebar({ locale }: { locale: string }) {
     >
       <nav
         aria-label={t("nav.appMenu")}
-        className="flex flex-col gap-4 rounded-2xl border border-surface-container-highest bg-surface-container-low/80 p-3 backdrop-blur"
+        className="flex flex-col gap-4 rounded-2xl border border-outline/30 bg-surface-container-low/80 p-3 shadow-lg shadow-black/10 backdrop-blur-xl"
       >
         <button
           type="button"
           {...handleProps}
-          className={`flex h-6 w-full !cursor-grab touch-none select-none items-center justify-center rounded-[0.5rem] text-on-surface-variant/60 transition-colors hover:bg-surface-container-high hover:text-primary focus-visible:text-primary ${
-            isDragging ? "!cursor-grabbing text-primary" : ""
+          className={`flex h-6 w-full !cursor-grab touch-none select-none items-center justify-center rounded-[0.5rem] text-on-surface-variant/40 transition-all hover:bg-surface-container-high hover:text-primary focus-visible:text-primary ${
+            isDragging ? "!cursor-grabbing bg-primary/10 text-primary" : ""
           }`}
           aria-label={t("nav.moveHandle")}
           title={t("nav.moveHandle")}
@@ -46,11 +46,11 @@ export function BoardSidebar({ locale }: { locale: string }) {
             pathname === href || (item.href !== "/" && pathname.startsWith(href));
           const label = t(`nav.${item.key}`);
           if(!item.active) {
-            return <button key={item.key} className={`group relative flex size-12 cursor-pointer items-center justify-center rounded-[0.75rem] transition-all ${
+            return <button key={item.key}            className={`group relative flex size-12 cursor-pointer items-center justify-center rounded-[0.75rem] transition-all ${
                 isActive
                   ? "border border-primary/20 bg-primary-container/20 text-primary"
                   : "border border-transparent text-on-surface-variant hover:bg-surface-container-high hover:text-primary"
-              }` + " disabled:opacity-50"} disabled>
+              } disabled:opacity-50`} disabled>
                 <item.icon aria-hidden="true" className="size-5" />
               <span
                 aria-hidden="true"
@@ -64,9 +64,9 @@ export function BoardSidebar({ locale }: { locale: string }) {
             <Link
               key={item.key}
               href={href}
-              className={`group relative flex size-12 cursor-pointer items-center justify-center rounded-[0.75rem] transition-all 
+              className={`group relative flex size-12 cursor-pointer items-center justify-center rounded-[0.75rem] transition-all
                 ${isActive
-                  ? "border border-primary/20 bg-primary-container/20 text-primary"
+                  ? "sidebar-active-glow border border-primary/20 bg-primary-container/20 text-primary shadow-sm shadow-primary/10"
                   : "border border-transparent text-on-surface-variant hover:bg-surface-container-high hover:text-primary"
               }`}
               aria-current={isActive ? "page" : undefined}

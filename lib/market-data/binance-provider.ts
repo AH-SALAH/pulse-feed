@@ -159,8 +159,15 @@ export class BinanceProvider implements MarketDataProvider {
     const openPrice = Number.parseFloat(message.data.o);
 
     // percentage change
-    const changePct = Number.isFinite(Number.parseFloat(message.data.P)) ? Number.parseFloat(message.data.P) : (price - openPrice) / openPrice;
-    if (Number.isNaN(price)) return;
+    // 1. Calculate raw change fraction (e.g., 0.1214) or convert incoming string percent (e.g., "12.14" -> 0.1214)
+    let changePct = 0;
+    if (message.data.P && Number.isFinite(Number.parseFloat(message.data.P))) {
+      changePct = Number.parseFloat(message.data.P) / 100; 
+    } else if (openPrice > 0) { // Protects against division-by-zero errors
+      changePct = (price - openPrice) / openPrice;
+    }
+
+  if (Number.isNaN(price)) return;
 
     const tick: Tick = {
       symbol,

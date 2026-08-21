@@ -66,7 +66,7 @@ export function BoardHeader({ locale }: { locale: string }) {
       ref={headerRef}
       role="region"
       aria-label={t("board.headerLabel")}
-      className="sticky top-0 z-20 border-b border-outline bg-surface-container-low/80 backdrop-blur"
+      className="sticky top-0 z-20 border-b border-outline/50 bg-surface-container-low/80 backdrop-blur-xl"
     >
       <div className="flex h-14 items-center justify-between gap-4 px-margin-mobile lg:px-margin-desktop">
         <div className="flex items-center gap-4">
@@ -80,17 +80,17 @@ export function BoardHeader({ locale }: { locale: string }) {
           <ThemeToggle />
           {user ? (
             <div className="hidden items-center gap-3 lg:flex">
-              <span className="inline-flex items-center gap-1.5 font-body text-body-md text-on-surface-variant">
-                <LuUser aria-hidden="true" className="size-4" />
+              <span className="inline-flex items-center gap-2 rounded-xl border border-outline-variant/30 bg-surface-container px-3 py-1.5 font-body text-body-sm text-on-surface-variant">
+                <LuUser aria-hidden="true" className="size-3.5 text-secondary" />
                 {user.name ?? user.email}
               </span>
               <button
                 type="button"
                 data-testid="sign-out"
                 onClick={handleSignOut}
-                className="inline-flex cursor-pointer items-center gap-1.5 font-body text-body-md text-on-surface-variant transition-colors hover:text-on-surface"
+                className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-body text-body-sm text-on-surface-variant transition-all hover:bg-surface-container-high hover:text-on-surface"
               >
-                <LuLogOut aria-hidden="true" className="size-4" />
+                <LuLogOut aria-hidden="true" className="size-3.5" />
                 {t("auth.signOut")}
               </button>
             </div>
@@ -98,7 +98,7 @@ export function BoardHeader({ locale }: { locale: string }) {
 
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-full border border-outline-variant bg-surface-container text-on-surface transition-colors hover:border-primary hover:bg-surface-container-high lg:hidden"
+            className="inline-flex size-10 items-center justify-center rounded-xl border border-outline-variant/60 bg-surface-container text-on-surface transition-all hover:border-primary/50 hover:bg-surface-container-high hover:text-primary lg:hidden"
             aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={menuOpen}
             aria-controls="board-mobile-nav-menu"
@@ -117,7 +117,7 @@ export function BoardHeader({ locale }: { locale: string }) {
         <div
           id="board-mobile-nav-menu"
           ref={panelRef}
-          className="absolute inset-x-0 top-full border-b border-outline bg-surface-container-low/95 backdrop-blur lg:hidden"
+          className="absolute inset-x-0 top-full z-10 border-b border-outline/50 bg-surface-container-low/95 shadow-lg shadow-black/20 backdrop-blur-xl animate-popover-in lg:hidden"
           role="menu"
           aria-label={t("nav.menuLabel")}
         >
@@ -144,18 +144,18 @@ export function BoardHeader({ locale }: { locale: string }) {
                     : "border border-transparent text-on-surface-variant hover:bg-surface-container-high hover:text-primary"
                   }`}
                 >
-                  <item.icon aria-hidden="true" className="size-4 text-on-surface-variant" />
+                  <item.icon aria-hidden="true" className="size-4 text-secondary" />
                   {label}
                 </Link>
               );
             })}
-            <div role="separator" className="my-1 h-px bg-outline-variant" />
+            <div role="separator" className="my-2 h-px bg-outline-variant/50" />
             <button
               type="button"
               role="menuitem"
               data-testid="sign-out"
               onClick={handleSignOut}
-              className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-3 text-start font-body text-body-md text-on-surface transition-colors hover:bg-surface-container"
+              className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-3 text-start font-body text-body-md text-on-surface transition-colors hover:bg-surface-container-high"
             >
               <LuLogOut aria-hidden="true" className="size-4 text-on-surface-variant" />
               {t("auth.signOut")}
