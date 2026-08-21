@@ -29,7 +29,7 @@ export default async function DemoPage({
         <div className="flex flex-col gap-4">
           <div className="animate-hero-in flex items-center gap-2">
             <span className="inline-block h-px w-8 bg-primary" />
-            <span className="font-telemetry text-label-caps tracking-wider text-primary">LIVE DATA</span>
+            <span className="font-telemetry text-label-caps tracking-wider text-primary">{dict.demo.liveData}</span>
           </div>
           <h1 className="animate-hero-in-delay-1 max-w-3xl font-heading text-headline-lg-mobile font-semibold leading-tight tracking-tight text-on-surface lg:text-display-lg whitespace-pre-line">
             {dict.demo.heroTitle}

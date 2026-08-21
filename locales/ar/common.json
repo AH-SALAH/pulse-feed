@@ -70,7 +70,8 @@
     "heroTitle": "بيانات سوق مباشرة، تُعرض في الوقت الفعلي.",
     "heroSubtitle": "تحليلات دقيقة ولحظية عبر محرك PulseFeed، لتمكين اتخاذ القرارات الإستراتيجية في المؤسسات.",
     "footerCta": "PulseFeed Terminal © {{year}}",
-    "status": "الحالة"
+    "status": "الحالة",
+    "liveData": "بيانات مباشرة"
   },
   "auth": {
     "signIn": "تسجيل الدخول",
@@ -93,6 +94,7 @@
     "haveAccount": "لديك حساب بالفعل؟",
     "continueWith": "متابعة مع {{provider}}",
     "or": "أو",
+    "redirecting": "جارٍ التحويل…",
     "signInWithEmail": "سجّل الدخول بالبريد الإلكتروني",
     "noAccount": "ليس لديك حساب؟",
     "createOne": "أنشئ حسابًا",

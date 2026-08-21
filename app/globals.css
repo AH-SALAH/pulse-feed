@@ -259,3 +259,16 @@ html[data-theme="light"] .bg-atmosphere::before {
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.8s ease-in-out infinite;
 }
+
+/* Social button shimmer during loading */
+.btn-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-surface-container) 0%,
+    var(--color-surface-container-high) 40%,
+    var(--color-surface-container) 80%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  border-color: color-mix(in srgb, var(--color-primary) 25%, transparent);
+}

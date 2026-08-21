@@ -70,7 +70,8 @@
     "heroTitle": "Live market data, \nrendered in real time.",
     "heroSubtitle": "PulseFeed-powered real-time analytics. Enabling strategic decision-making at the enterprise level.",
     "footerCta": "PulseFeed Terminal © {{year}}",
-    "status": "Status"
+    "status": "Status",
+    "liveData": "LIVE DATA"
   },
   "auth": {
     "signIn": "Sign in",
@@ -93,6 +94,7 @@
     "haveAccount": "Already have an account?",
     "continueWith": "Continue with {{provider}}",
     "or": "or",
+    "redirecting": "Redirecting…",
     "signInWithEmail": "Sign in with email",
     "noAccount": "Don't have an account?",
     "createOne": "Create one",

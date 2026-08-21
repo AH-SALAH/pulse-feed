@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import {
   LuUser,
   LuMail,
@@ -66,12 +67,16 @@ export function SignUpForm({ locale }: SignUpFormProps) {
     router.refresh();
   }
 
+  const [socialLoading, setSocialLoading] = useState<"github" | "google" | null>(null);
+
   async function handleSocialSignIn(provider: "github" | "google") {
+    setSocialLoading(provider);
     const { error } = await authClient.signIn.social({
       provider,
       callbackURL: `/${locale}/board`,
     });
     if (error) {
+      setSocialLoading(null);
       setError("root.serverError", {
         message: signUpErrorMessage(t, error.code),
       });
@@ -101,20 +106,38 @@ export function SignUpForm({ locale }: SignUpFormProps) {
             <button
               type="button"
               onClick={() => handleSocialSignIn("github")}
-              disabled={isSubmitting}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-outline-variant/60 bg-surface-container px-4 py-2.5 font-body text-body-md font-medium text-on-surface transition-all hover:border-outline-variant hover:bg-surface-container-high hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50 h-[48px]"
+              disabled={isSubmitting || socialLoading !== null}
+              className={`inline-flex items-center justify-center gap-2 rounded-2xl border border-outline-variant/60 bg-surface-container px-4 py-2.5 font-body text-body-md font-medium text-on-surface transition-all hover:border-outline-variant hover:bg-surface-container-high hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50 h-[48px]${socialLoading === "github" ? " btn-shimmer" : ""}`}
             >
-              <LuGithub aria-hidden="true" className="size-5" />
-              {t("auth.continueWith", { provider: "GitHub" })}
+              {socialLoading === "github" ? (
+                <>
+                  <LuLoaderCircle aria-hidden="true" className="size-5 animate-spin" />
+                  {t("auth.redirecting")}
+                </>
+              ) : (
+                <>
+                  <LuGithub aria-hidden="true" className="size-5" />
+                  {t("auth.continueWith", { provider: "GitHub" })}
+                </>
+              )}
             </button>
             <button
               type="button"
               onClick={() => handleSocialSignIn("google")}
-              disabled={isSubmitting}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-outline-variant/60 bg-surface-container px-4 py-2.5 font-body text-body-md font-medium text-on-surface transition-all hover:border-outline-variant hover:bg-surface-container-high hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50 h-[48px]"
+              disabled={isSubmitting || socialLoading !== null}
+              className={`inline-flex items-center justify-center gap-2 rounded-2xl border border-outline-variant/60 bg-surface-container px-4 py-2.5 font-body text-body-md font-medium text-on-surface transition-all hover:border-outline-variant hover:bg-surface-container-high hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-primary disabled:cursor-not-allowed disabled:opacity-50 h-[48px]${socialLoading === "google" ? " btn-shimmer" : ""}`}
             >
-              <LuChrome aria-hidden="true" className="size-5" />
-              {t("auth.continueWith", { provider: "Google" })}
+              {socialLoading === "google" ? (
+                <>
+                  <LuLoaderCircle aria-hidden="true" className="size-5 animate-spin" />
+                  {t("auth.redirecting")}
+                </>
+              ) : (
+                <>
+                  <LuChrome aria-hidden="true" className="size-5" />
+                  {t("auth.continueWith", { provider: "Google" })}
+                </>
+              )}
             </button>
           </div>
 
@@ -249,7 +272,7 @@ export function SignUpForm({ locale }: SignUpFormProps) {
 
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || socialLoading !== null}
               className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-primary px-6 py-2.5 font-body text-body-md font-medium text-on-primary shadow-sm shadow-primary/20 transition-all hover:bg-primary-container/80 hover:shadow-md hover:shadow-primary/30 disabled:cursor-not-allowed disabled:opacity-50 h-[48px]"
             >
               {isSubmitting ? (
