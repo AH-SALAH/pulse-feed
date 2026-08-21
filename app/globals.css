@@ -1,0 +1,261 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@theme inline {
+  --color-foreground: var(--color-on-background);
+  --font-display: var(--font-display);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+  --font-telemetry: var(--font-telemetry);
+  --font-label: var(--font-label);
+}
+
+:root {
+  color-scheme: dark light;
+}
+
+html {
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+html[data-locale="ar"] {
+  font-family: var(--font-arabic), var(--font-body), system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+button:not(:disabled),
+[role="button"]:not(:disabled) {
+  cursor: pointer;
+}
+
+@keyframes price-pop {
+  0% {
+    transform: translateY(2px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-cyan {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-price-pop {
+  animation: price-pop 300ms ease-out;
+}
+
+.animate-pulse-cyan {
+  animation: pulse-cyan 1.5s ease-in-out infinite;
+}
+
+@keyframes sparkline-pulse {
+  0%, 100% { stroke-opacity: 1; filter: drop-shadow(0 0 0px transparent); }
+  50% { stroke-opacity: 0.7; filter: drop-shadow(0 0 3px var(--color-secondary)); }
+}
+
+.sparkline-live-pulse {
+  animation: sparkline-pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse-skeleton {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-pulse-skeleton {
+  animation: pulse-skeleton 1.6s ease-in-out infinite;
+}
+
+@keyframes popover-in {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-popover-in {
+  animation: popover-in 180ms ease-out;
+}
+
+/* Hero entrance — staggered fade-in-up */
+@keyframes hero-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-in {
+  animation: hero-fade-in-up 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-hero-in-delay-1 {
+  animation: hero-fade-in-up 600ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+}
+
+.animate-hero-in-delay-2 {
+  animation: hero-fade-in-up 600ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+}
+
+.animate-hero-in-delay-3 {
+  animation: hero-fade-in-up 600ms cubic-bezier(0.16, 1, 0.3, 1) 240ms both;
+}
+
+/* Auth card entrance */
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-card-in {
+  animation: card-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-card-in-delay-1 {
+  animation: card-in 500ms cubic-bezier(0.16, 1, 0.3, 1) 100ms both;
+}
+
+.animate-card-in-delay-2 {
+  animation: card-in 500ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+}
+
+.animate-card-in-delay-3 {
+  animation: card-in 500ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
+}
+
+/* Focus visible — Amber glow per DESIGN.md */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+/* Scrollbar — subtle, tonal */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface-container-lowest);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+/* Logo — theme-aware swap */
+.theme-logo-light {
+  display: none;
+}
+html[data-theme="light"] .theme-logo-dark {
+  display: none;
+}
+html[data-theme="light"] .theme-logo-light {
+  display: block;
+}
+
+/* Background image — atmospheric layer for marketing pages */
+.bg-atmosphere {
+  position: relative;
+  overflow: hidden;
+}
+.bg-atmosphere::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/bg-01.webp");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+}
+/* Light theme — slightly more visible */
+html[data-theme="light"] .bg-atmosphere::before {
+  opacity: 0.12;
+}
+/* Content above the background */
+.bg-atmosphere > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Sidebar active glow — ambient light behind active nav item */
+.sidebar-active-glow {
+  position: relative;
+}
+.sidebar-active-glow::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 1rem;
+  background: radial-gradient(circle at center, var(--color-primary) 0%, transparent 70%);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: -1;
+  transition: opacity 200ms ease;
+}
+.sidebar-active-glow:hover::before {
+  opacity: 0.18;
+}
+
+/* Widget skeleton shimmer */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.widget-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-container) 0%,
+    var(--color-surface-container-high) 40%,
+    var(--color-surface-container) 80%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.8s ease-in-out infinite;
+}

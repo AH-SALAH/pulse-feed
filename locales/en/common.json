@@ -1,0 +1,131 @@
+{
+  "widget": {
+    "reconnecting": "reconnecting…",
+    "live": "live",
+    "liveStream": "Live Stream",
+    "priceHistoryAria": "{{symbol}} price history",
+    "explain": {
+      "heading": "AI analysis",
+      "cta": "Explain this",
+      "aria": "Explain {{symbol}} price action",
+      "again": "Explain again",
+      "dismiss": "Dismiss explanation",
+      "loading": "Analyzing…",
+      "loadingDetail": "Analyzing recent price action…",
+      "unavailable": "AI insight resets at midnight UTC.",
+      "signInRequired": "Sign in to get AI explanations",
+      "error": "Couldn't generate an explanation. Try again."
+    },
+    "names": {
+      "BTC": "Bitcoin",
+      "ETH": "Ethereum",
+      "SOL": "Solana",
+      "BNB": "Binance Coin",
+      "ADA": "Cardano",
+      "DOT": "Polkadot",
+      "AVAX": "Avalanche",
+      "MATIC": "Polygon",
+      "DOGE": "Dogecoin",
+      "XRP": "XRP",
+      "LINK": "Chainlink"
+    }
+  },
+  "board": {
+    "addWidget": "Add widget",
+    "selectSymbol": "Select symbol…",
+    "limitReached": "Limit reached",
+    "add": "Add",
+    "widgetLimitReached": "Limit of {{count}} widgets reached",
+    "addError": "Failed to add widget",
+    "removeError": "Failed to remove widget",
+    "reorderError": "Failed to reorder widgets",
+    "removeAria": "Remove {{symbol}}",
+    "modalTitle": "Add widget",
+    "modalSubtitle": "Select a trading pair to monitor",
+    "searchAria": "Search trading pairs",
+    "searchPlaceholder": "Search symbol or metric…",
+    "assetHeader": "Asset / Pair",
+    "valueHeader": "Last Value",
+    "trendHeader": "24h Trend",
+    "addRowAria": "Add {{symbol}} widget",
+    "rowSparklineAria": "{{symbol}} 24h price history",
+    "noResults": "No matching pairs found",
+    "closeModalAria": "Close add widget dialog",
+    "cancel": "Cancel",
+    "empty": {
+      "title": "No widgets yet",
+      "cta": "Add your first widget"
+    },
+    "errors": {
+      "symbolRequired": "Choose a symbol"
+    },
+    "myBoard": "Currency Board",
+    "headerLabel": "Board header",
+    "realTimeFeed": "Real-time Feed Active",
+    "latency": "Latency",
+    "uptime": "Uptime",
+    "version": "v2.4"
+  },
+  "demo": {
+    "heroTitle": "Live market data, \nrendered in real time.",
+    "heroSubtitle": "PulseFeed-powered real-time analytics. Enabling strategic decision-making at the enterprise level.",
+    "footerCta": "PulseFeed Terminal © {{year}}",
+    "status": "Status"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "socialProof": "Trusted by 10,000+ traders worldwide",
+    "socialProofCount": "2,400+ active boards",
+    "signingIn": "Signing in…",
+    "welcomeBack": "Welcome back",
+    "subtitle": "Sign in to access your personal board",
+    "email": "Email",
+    "password": "Password",
+    "invalidCredentials": "Invalid email or password",
+    "newHere": "New here?",
+    "createAccount": "Create an account",
+    "signInTo": "Sign in to PulseFeed",
+    "signUpTo": "Create your PulseFeed account",
+    "name": "Name",
+    "signingUp": "Creating account…",
+    "signUpWithEmail": "Sign up with email",
+    "haveAccount": "Already have an account?",
+    "continueWith": "Continue with {{provider}}",
+    "or": "or",
+    "signInWithEmail": "Sign in with email",
+    "noAccount": "Don't have an account?",
+    "createOne": "Create one",
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Enter a valid email address",
+      "passwordRequired": "Password is required",
+      "passwordMin": "Password must be at least 8 characters",
+      "nameRequired": "Name is required",
+      "nameTooLong": "Name must be 50 characters or fewer",
+      "emailTaken": "An account with this email already exists",
+      "signUpFailed": "Couldn't create your account. Try again."
+    }
+  },
+  "nav": {
+    "demo": "Demo",
+    "myBoard": "Currency Board",
+    "home": "Home",
+    "board": "Board",
+    "market": "Market",
+    "alerts": "Alerts",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuLabel": "Primary",
+    "appMenu": "Board navigation",
+    "moveHandle": "Move board navigation (drag or use arrow keys)"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "page": {
+    "demoTitle": "Live cryptocurrency prices",
+    "boardTitle": "My board",
+    "pulseFeed": "PulseFeed"
+  }
+}

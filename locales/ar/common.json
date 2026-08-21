@@ -1,0 +1,131 @@
+{
+  "widget": {
+    "reconnecting": "جارٍ إعادة الاتصال…",
+    "live": "مباشر",
+    "liveStream": "بث مباشر",
+    "priceHistoryAria": "تاريخ سعر {{symbol}}",
+    "explain": {
+      "heading": "تحليل الذكاء الاصطناعي",
+      "cta": "اشرح هذا",
+      "aria": "اشرح حركة سعر {{symbol}}",
+      "again": "اشرح مجددًا",
+      "dismiss": "إغلاق الشرح",
+      "loading": "جارٍ التحليل…",
+      "loadingDetail": "جارٍ تحليل حركة السعر الأخيرة…",
+      "unavailable": "يُعاد ضبط الرصيد عند منتصف الليل بتوقيت UTC.",
+      "signInRequired": "سجّل الدخول للحصول على شروحات الذكاء الاصطناعي",
+      "error": "تعذّر إنشاء الشرح. حاول مرة أخرى."
+    },
+    "names": {
+      "BTC": "بيتكوين",
+      "ETH": "إيثيريوم",
+      "SOL": "سولانا",
+      "BNB": "عملة بينانس",
+      "ADA": "كاردانو",
+      "DOT": "بولكادوت",
+      "AVAX": "أفالانش",
+      "MATIC": "بوليجون",
+      "DOGE": "دوجكوين",
+      "XRP": "إكس آر بي",
+      "LINK": "تشينلينك"
+    }
+  },
+  "board": {
+    "addWidget": "إضافة أداة",
+    "selectSymbol": "اختر رمزًا…",
+    "limitReached": "تم بلوغ الحد الأقصى",
+    "add": "إضافة",
+    "widgetLimitReached": "تم بلوغ الحد الأقصى وهو {{count}} أدوات",
+    "addError": "تعذّرت إضافة الأداة",
+    "removeError": "تعذّرت إزالة الأداة",
+    "reorderError": "تعذّرت إعادة ترتيب الأدوات",
+    "removeAria": "إزالة {{symbol}}",
+    "modalTitle": "إضافة أداة",
+    "modalSubtitle": "اختر زوج تداول للمراقبة",
+    "searchAria": "البحث في أزواج التداول",
+    "searchPlaceholder": "ابحث عن رمز أو مقياس…",
+    "assetHeader": "الأصل / الزوج",
+    "valueHeader": "آخر قيمة",
+    "trendHeader": "اتجاه 24 ساعة",
+    "addRowAria": "إضافة أداة {{symbol}}",
+    "rowSparklineAria": "تاريخ سعر {{symbol}} خلال 24 ساعة",
+    "noResults": "لا توجد أزواج مطابقة",
+    "closeModalAria": "إغلاق نافذة إضافة الأداة",
+    "cancel": "إلغاء",
+    "empty": {
+      "title": "لا توجد أدوات بعد",
+      "cta": "أضف أول أداة"
+    },
+    "errors": {
+      "symbolRequired": "اختر رمزًا"
+    },
+    "myBoard": "لوحة العملات",
+    "headerLabel": "رأس اللوحة",
+    "realTimeFeed": "تغذية مباشرة نشطة",
+    "latency": "زمن الاستجابة",
+    "uptime": "وقت التشغيل",
+    "version": "v2.4"
+  },
+  "demo": {
+    "heroTitle": "بيانات سوق مباشرة، تُعرض في الوقت الفعلي.",
+    "heroSubtitle": "تحليلات دقيقة ولحظية عبر محرك PulseFeed، لتمكين اتخاذ القرارات الإستراتيجية في المؤسسات.",
+    "footerCta": "PulseFeed Terminal © {{year}}",
+    "status": "الحالة"
+  },
+  "auth": {
+    "signIn": "تسجيل الدخول",
+    "signOut": "تسجيل الخروج",
+    "socialProof": "موثوق من قبل أكثر من 10,000 متداول حول العالم",
+    "socialProofCount": "أكثر من 2,400 لوحة نشطة",
+    "signingIn": "جارٍ تسجيل الدخول…",
+    "welcomeBack": "مرحبًا بعودتك",
+    "subtitle": "سجّل الدخول للوصول إلى لوحتك الشخصية",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+    "newHere": "جديد هنا؟",
+    "createAccount": "أنشئ حسابًا",
+    "signInTo": "سجّل الدخول إلى PulseFeed",
+    "signUpTo": "أنشئ حسابك في PulseFeed",
+    "name": "الاسم",
+    "signingUp": "جارٍ إنشاء الحساب…",
+    "signUpWithEmail": "أنشئ حسابًا بالبريد الإلكتروني",
+    "haveAccount": "لديك حساب بالفعل؟",
+    "continueWith": "متابعة مع {{provider}}",
+    "or": "أو",
+    "signInWithEmail": "سجّل الدخول بالبريد الإلكتروني",
+    "noAccount": "ليس لديك حساب؟",
+    "createOne": "أنشئ حسابًا",
+    "errors": {
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "emailInvalid": "أدخل بريدًا إلكترونيًا صالحًا",
+      "passwordRequired": "كلمة المرور مطلوبة",
+      "passwordMin": "يجب ألا تقل كلمة المرور عن 8 أحرف",
+      "nameRequired": "الاسم مطلوب",
+      "nameTooLong": "يجب ألا يتجاوز الاسم 50 حرفًا",
+      "emailTaken": "يوجد حساب بهذا البريد الإلكتروني بالفعل",
+      "signUpFailed": "تعذّر إنشاء الحساب. حاول مرة أخرى."
+    }
+  },
+  "nav": {
+    "demo": "العرض التجريبي",
+    "myBoard": "لوحة العملات",
+    "home": "الرئيسية",
+    "board": "اللوحة",
+    "market": "السوق",
+    "alerts": "التنبيهات",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "menuLabel": "القائمة الرئيسية",
+    "appMenu": "تنقل اللوحة",
+    "moveHandle": "انقل تنقل اللوحة (اسحب أو استخدم مفاتيح الأسهم)"
+  },
+  "language": {
+    "label": "اللغة"
+  },
+  "page": {
+    "demoTitle": "أسعار العملات الرقمية المباشرة",
+    "boardTitle": "لوحتي",
+    "pulseFeed": "PulseFeed"
+  }
+}
