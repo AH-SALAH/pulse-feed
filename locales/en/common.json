@@ -5,16 +5,16 @@
     "liveStream": "Live Stream",
     "priceHistoryAria": "{{symbol}} price history",
     "explain": {
-      "heading": "AI analysis",
-      "cta": "Explain this",
-      "aria": "Explain {{symbol}} price action",
-      "again": "Explain again",
-      "dismiss": "Dismiss explanation",
+      "heading": "AI",
+      "cta": "Analyze",
+      "aria": "Analyze {{symbol}} price action",
+      "again": "Analyze again",
+      "dismiss": "Dismiss analysis",
       "loading": "Analyzing…",
       "loadingDetail": "Analyzing recent price action…",
       "unavailable": "AI insight resets at midnight UTC.",
-      "signInRequired": "Sign in to get AI explanations",
-      "error": "Couldn't generate an explanation. Try again."
+      "signInRequired": "Sign in to get AI analysis",
+      "error": "Couldn't generate an analysis. Try again."
     },
     "names": {
       "BTC": "Bitcoin",
