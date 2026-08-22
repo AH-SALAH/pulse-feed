@@ -64,7 +64,7 @@ describe("BinanceProvider", () => {
     const tick: Tick = cb.mock.calls[0][0] as Tick;
     expect(tick.symbol).toBe("BTCUSDT");
     expect(tick.price).toBe(64000.5);
-    expect(tick.changePct).toBe(1.23);
+    expect(tick.changePct).toBe(1.23/100);
     expect(provider.getWindow("BTCUSDT")).toHaveLength(1);
   });
 
