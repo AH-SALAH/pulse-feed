@@ -193,7 +193,7 @@
    =========================================== */
 html[data-theme="light"] {
   /* Colors — Surface Scale */
-  --color-surface: #fff8f5;
+  --color-surface: #f5f5f5;
   --color-surface-dim: #e9d6cc;
   --color-surface-bright: #fff8f5;
   --color-surface-container-lowest: #ffffff;
