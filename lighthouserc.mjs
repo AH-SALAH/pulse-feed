@@ -8,7 +8,7 @@ const config = {
     collect: {
       url: [`${baseURL}/en`, `${baseURL}/ar`],
       numberOfRuns: 1,
-      startServerCommand: "npm run start",
+      startServerCommand: "NODE_ENV=production npm run start",
       startServerReadyPattern: "Ready in",
       settings: {
         chromeFlags: "--no-sandbox --headless",
