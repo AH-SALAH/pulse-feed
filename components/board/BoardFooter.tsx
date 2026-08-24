@@ -9,7 +9,6 @@ export function BoardFooter() {
     <footer className="fixed bottom-0 z-10 w-full border-t border-outline/40 bg-surface-container-low/80 backdrop-blur-xl lg:block">
       <div className="flex items-center justify-between gap-4 px-margin-mobile lg:px-margin-desktop py-2.5 text-xs">
         <div className="flex items-center gap-3">
-          <span className="hidden h-3 w-px bg-outline-variant/40 lg:block" />
           <p className="font-body text-body-sm text-on-surface-variant/60">
             {t("demo.footerCta", { year: String(new Date().getFullYear()) })}
           </p>

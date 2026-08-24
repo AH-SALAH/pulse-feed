@@ -50,7 +50,6 @@ export default async function DemoPage({
       <footer className="mt-auto border-t border-outline/40 bg-surface-container-low/60 backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-4 px-margin-mobile py-6 text-center lg:flex-row lg:px-margin-desktop lg:py-5 lg:text-start">
           <div className="flex items-center gap-3">
-            <span className="inline-block h-4 w-px bg-outline-variant/60" />
             <p className="font-body text-body-sm text-on-surface-variant">
               {dict.demo.footerCta.replace("{{year}}", String(new Date().getFullYear()))}
             </p>
