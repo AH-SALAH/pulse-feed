@@ -88,6 +88,9 @@ export default async function LocaleLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${arabic.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="describedby" href="/llms.txt" />
+      </head>
       <body
         className="min-h-full flex flex-col"
         suppressHydrationWarning

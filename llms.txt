@@ -1,0 +1,64 @@
+# PulseFeed
+
+> Real-time cryptocurrency market-data visualization platform. Public demo board streams live prices from Binance WebSocket with no login required; signed-in users get a customizable personal board, per-widget AI explanations of price action via OpenRouter, full English/Arabic (RTL) support, and token-driven dark/light theming. Built on Next.js 16, PostgreSQL, Better Auth, and OpenRouter.
+
+PulseFeed is an open-source (MIT) project by Ahmed Salah. The codebase is TypeScript-strict, uses a library-first architecture where market data, AI insight, boards, and auth are isolated modules under `lib/`. Every mutation re-derives the acting user from the server-side session; client-supplied identity is never trusted. Design tokens live in a single CSS file (`styles/tokens.css`) — components are not complete until verified in both themes and both locales.
+
+## Getting Started
+
+- [README](https://github.com/AH-SALAH/pulse-feed/blob/main/README.md): Full setup instructions, environment variables, project structure, and architecture notes
+- [Design System](https://github.com/AH-SALAH/pulse-feed/blob/main/DESIGN.md): "Technical Instrumentation" design system — color tokens, typography (Space Grotesk, Inter, JetBrains Mono), spacing, component specs, and layout rules
+- [Environment Template](https://github.com/AH-SALAH/pulse-feed/blob/main/.env.example): Required environment variables — DATABASE_URL, BETTER_AUTH_SECRET, OAuth providers, OpenRouter API key
+
+## Architecture
+
+- [Prisma Schema](https://github.com/AH-SALAH/pulse-feed/blob/main/prisma/schema.prisma): Database schema — User, Board, Widget, Session, Account models
+- [Market Data Provider](https://github.com/AH-SALAH/pulse-feed/blob/main/lib/market-data/provider.ts): Provider interface and factory for streaming market data (Binance WebSocket)
+- [Binance Provider](https://github.com/AH-SALAH/pulse-feed/blob/main/lib/market-data/binance-provider.ts): Binance WebSocket implementation — connects to `wss://stream.binance.com:9443`, streams 1-minute klines
+- [AI Insight Client](https://github.com/AH-SALAH/pulse-feed/blob/main/lib/ai-insight/client.ts): OpenRouter integration — builds prompts from price tick windows, returns plain-language summaries, 5-minute shared cache
+- [Board Service](https://github.com/AH-SALAH/pulse-feed/blob/main/lib/boards/service.ts): Board CRUD — add/remove/reorder widgets (max 8), ownership checks, auto-creates default board on first login
+- [Auth Config](https://github.com/AH-SALAH/pulse-feed/blob/main/lib/auth/config.ts): Better Auth setup — email/password, GitHub OAuth, Google OAuth, Prisma adapter
+- [Rate Limiter](https://github.com/AH-SALAH/pulse-feed/blob/main/lib/rate-limit/token-bucket.ts): Token bucket rate limiting — 30 requests/user/day on the AI explanation endpoint
+- [Form Schemas](https://github.com/AH-SALAH/pulse-feed/blob/main/lib/forms/schemas.ts): Shared Zod validation schemas for sign-in, sign-up, and widget forms
+
+## API Routes
+
+- [Auth Handler](https://github.com/AH-SALAH/pulse-feed/blob/main/app/api/auth/): Better Auth catch-all route handler at `/api/auth/[...all]`
+- [Demo Board](https://github.com/AH-SALAH/pulse-feed/blob/main/app/api/boards/public/demo/route.ts): Public demo board data endpoint (unauthenticated) — returns 4 default widgets
+- [User Board](https://github.com/AH-SALAH/pulse-feed/blob/main/app/api/boards/me/route.ts): Authenticated user board CRUD
+- [Widget Management](https://github.com/AH-SALAH/pulse-feed/blob/main/app/api/boards/me/widgets/route.ts): Widget add/remove/reorder for authenticated users
+- [AI Explain](https://github.com/AH-SALAH/pulse-feed/blob/main/app/api/ai/explain/route.ts): AI price-action explanation endpoint (rate-limited, requires auth)
+
+## Components
+
+- [Widget](https://github.com/AH-SALAH/pulse-feed/blob/main/components/widget/Widget.tsx): Widget card — sparkline chart, price display, AI explain button, remove control
+- [Sparkline](https://github.com/AH-SALAH/pulse-feed/blob/main/components/widget/Sparkline.tsx): D3 sparkline chart — renders ~200-tick price window with gradient fill
+- [ExplainButton](https://github.com/AH-SALAH/pulse-feed/blob/main/components/widget/ExplainButton.tsx): AI explanation trigger — shows loading, summary, or "resets at midnight UTC" state
+- [Board Grid](https://github.com/AH-SALAH/pulse-feed/blob/main/components/board/BoardGrid.tsx): Responsive widget grid — 12-column desktop, single-column mobile
+- [Board Sidebar](https://github.com/AH-SALAH/pulse-feed/blob/main/components/board/BoardSidebar.tsx): Floating draggable sidebar — position persists in localStorage, keyboard-operable
+- [ThemeProvider](https://github.com/AH-SALAH/pulse-feed/blob/main/components/providers/ThemeProvider.tsx): Theme context — CSS custom properties, OS detection, persisted override, no flash-of-wrong-theme
+- [Navigation](https://github.com/AH-SALAH/pulse-feed/blob/main/components/nav/Nav.tsx): Top navigation bar — theme toggle, language switcher, mobile hamburger
+
+## i18n
+
+- [English Translations](https://github.com/AH-SALAH/pulse-feed/blob/main/locales/en/common.json): English locale strings
+- [Arabic Translations](https://github.com/AH-SALAH/pulse-feed/blob/main/locales/ar/common.json): Arabic locale strings — full RTL support with locale-prefixed routing (`/en`, `/ar`)
+- [Locale Settings](https://github.com/AH-SALAH/pulse-feed/blob/main/lib/i18n/settings.ts): Supported locales, direction mapping, default locale
+
+## Testing
+
+- [Unit Tests (Vitest)](https://github.com/AH-SALAH/pulse-feed/tree/main/lib): 15 test files, 91 tests covering all lib modules — auth, boards, AI insight, market data, i18n, forms
+- [E2E Tests (Playwright)](https://github.com/AH-SALAH/pulse-feed/tree/main/tests/e2e): 8 Playwright specs — demo board, sign-in, sign-up, board customization, AI explain, i18n RTL, accessibility, sidebar drag
+- [Storybook Stories](https://github.com/AH-SALAH/pulse-feed/tree/main/.storybook): Component stories for Widget, ExplainButton, BoardSidebar, Sparkline, ThemeToggle
+
+## Deployment
+
+- [CI Workflow](https://github.com/AH-SALAH/pulse-feed/blob/main/.github/workflows/ci.yml): GitHub Actions — lint, typecheck, unit tests, Storybook build (no secrets required); optional E2E, Lighthouse, Vercel deploy (gated by repository variables)
+- [Lighthouse Config](https://github.com/AH-SALAH/pulse-feed/blob/main/lighthouserc.mjs): Lighthouse CI thresholds — performance ≥ 0.9 (warn), accessibility/best-practices/seo ≥ 0.9 (error), both `/en` and `/ar` locales
+
+## Optional
+
+- [Next.js Config](https://github.com/AH-SALAH/pulse-feed/blob/main/next.config.ts): Security headers (CSP, HSTS, X-Frame-Options), Vercel deployment config
+- [PostCSS Config](https://github.com/AH-SALAH/pulse-feed/blob/main/postcss.config.mjs): Tailwind CSS and PostCSS pipeline
+- [TypeScript Config](https://github.com/AH-SALAH/pulse-feed/blob/main/tsconfig.json): Strict TypeScript with path aliases (`@/*`)
+- [License](https://github.com/AH-SALAH/pulse-feed/blob/main/LICENSE): MIT License

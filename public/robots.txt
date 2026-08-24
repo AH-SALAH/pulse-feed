@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+
+# AI/LLM crawlers — llms.txt provides structured context for language models
+Allow: /llms.txt
+Allow: /llms-full.txt
