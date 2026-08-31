@@ -76,7 +76,9 @@ prevents free-tier exhaustion.
 
 ### Demo Recording
 
-<video src="https://github.com/AH-SALAH/pulse-feed/raw/refactor/AS-update-readme-v0.1/public/screenshots/demo-recording.mp4" width="100%" controls></video>
+
+https://github.com/user-attachments/assets/5a5acd82-622e-4c4c-b502-1a5cb811aad8
+
 
 ---
 
