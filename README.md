@@ -76,7 +76,7 @@ prevents free-tier exhaustion.
 
 ### Demo Recording
 
-<video src="public/screenshots/demo-recording.mp4" width="100%" controls></video>
+<video src="https://github.com/public/screenshots/demo-recording.mp4" width="100%" controls></video>
 
 ---
 
